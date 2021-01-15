@@ -13,3 +13,9 @@ export const LoadingWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const User = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+`

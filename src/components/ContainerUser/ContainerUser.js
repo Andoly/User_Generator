@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import SelectComponent from "../Select/Index";
@@ -6,7 +6,8 @@ import Button from "../Button/Index";
 import Input from "../Input/Index";
 import LoadingComponent from "../Loading/Loading";
 
-import { Form, LoadingWrapper } from "./styles";
+import { Form, LoadingWrapper, User } from "./styles";
+import UserCard from "../UserCard/UserCard";
 
 const mainOption = [
   { value: "1", label: "País" },
@@ -38,14 +39,15 @@ const countryOptions = [
   { value: "us", label: "EUA" },
 ];
 
-const Index = () => {
+const ContainerUser = () => {
   const [selectMain, setselectMain] = useState("");
   const [selectCountry, setSelectCountry] = useState("");
   const [selectGenre, setSelectGenre] = useState("");
   const [counter, setCounter] = useState(1);
   const [loadingRequest, setLoadingRequest] = useState(false);
   const [userInform, setUserInform] = useState([]);
-  const [inputError, setInputError] = useState("");
+
+  console.log(userInform);
 
   const checkInput = () => {
     return selectCountry !== "" || selectGenre !== "";
@@ -69,22 +71,20 @@ const Index = () => {
       fetch(`https://randomuser.me/api/${getRequest()}&results=${counter}`, {
         headers,
       }).then((response) => {
-        response
-          .json()
-          .then((parsed) => {
-            console.log("response: ", parsed);
-            const { results } = parsed;
-            setUserInform(results);
-            setLoadingRequest(false);
-          })
+        response.json().then((parsed) => {
+          console.log("response: ", parsed);
+          const { results } = parsed;
+          setUserInform(results);
+          setLoadingRequest(false);
+        });
       });
     } else {
-      setInputError("Erro na busca por esse repositório");
+      return alert("Selecione uma opção por favor !");
     }
   };
 
   return (
-    <>
+    <Fragment>
       <hr style={{ border: "none", borderTop: "1px solid #dedede" }} />
       <Form onSubmit={(event) => handleRequestUser(event)}>
         <SelectComponent
@@ -117,8 +117,14 @@ const Index = () => {
           <LoadingComponent />
         </LoadingWrapper>
       )}
-    </>
+      <User>
+        {!loadingRequest &&
+          userInform.map((person, index) => {
+            return <UserCard key={index} {...person} />
+          })}
+      </User>
+    </Fragment>
   );
 };
 
-export default Index;
+export default ContainerUser;

@@ -1,8 +1,8 @@
 import React from "react";
-import Form from "./components/Form/Index";
+import User from "./components/ContainerUser/ContainerUser";
 
 const App = () => {
-  return <Form />;
+  return <User />;
 };
 
 export default App;
