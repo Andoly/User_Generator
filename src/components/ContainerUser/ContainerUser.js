@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import SelectComponent from "../Select/Index";
@@ -47,7 +47,14 @@ const ContainerUser = () => {
   const [loadingRequest, setLoadingRequest] = useState(false);
   const [userInform, setUserInform] = useState([]);
 
-  console.log(userInform);
+  // console.log(userInform);
+
+  useEffect(() => {
+    if (selectMain !== "") {
+      setSelectCountry("");
+      setSelectGenre("");
+    }
+  }, [selectMain]);
 
   const checkInput = () => {
     return selectCountry !== "" || selectGenre !== "";
@@ -72,7 +79,6 @@ const ContainerUser = () => {
         headers,
       }).then((response) => {
         response.json().then((parsed) => {
-          console.log("response: ", parsed);
           const { results } = parsed;
           setUserInform(results);
           setLoadingRequest(false);
@@ -120,7 +126,7 @@ const ContainerUser = () => {
       <User>
         {!loadingRequest &&
           userInform.map((person, index) => {
-            return <UserCard key={index} {...person} />
+            return <UserCard key={index} {...person} />;
           })}
       </User>
     </Fragment>
