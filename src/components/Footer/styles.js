@@ -4,7 +4,8 @@ import { shade } from 'polished'
 export const Wrapper = styled.div`
   width: 100%;
   height: 220px;
-  position: absolute;
+  position: relative;
+  bottom: -120px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -15,7 +16,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   color: #00308f;
-  font-weight: 500;
+  font-weight: 600;
 `;
 export const Wave = styled.div`
   width: 1000px;

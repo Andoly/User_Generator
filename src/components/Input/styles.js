@@ -11,5 +11,8 @@ export const Input = styled.input`
   margin-left: 10px;
   box-sizing: border-box; 
   border-radius: 5px;
+  @media (max-width: 800px) {
+    margin: 10px 0;
+  }
 
 `;

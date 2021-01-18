@@ -15,4 +15,8 @@ export const SelectComponent = styled.select`
   margin-left: 10px;
   border-radius: 5px;
   cursor: pointer;
+
+  @media (max-width: 800px) {
+    margin: 20px 0;
+  }
 `;

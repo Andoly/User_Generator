@@ -1,8 +1,8 @@
 import React from "react";
-import User from "./components/ContainerUser/ContainerUser";
+import Main from "./components/Main/MainGenerator";
 
 const App = () => {
-  return <User />;
+  return <Main style={{ margin: 0 }} />;
 };
 
 export default App;

@@ -1,13 +1,12 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import SelectComponent from "../Select/Index";
 import Button from "../Button/Index";
 import Input from "../Input/Index";
 import LoadingComponent from "../Loading/Loading";
-import Footer from "../Footer/Footer";
 
-import { Form, LoadingWrapper, User } from "./styles";
+import { MainContainer, Form, LoadingWrapper, User } from "./styles";
 import UserCard from "../UserCard/UserCard";
 
 const mainOption = [
@@ -50,6 +49,7 @@ const ContainerUser = () => {
 
   console.log(userInform);
 
+
   useEffect(() => {
     if (selectMain !== "") {
       setSelectCountry("");
@@ -73,10 +73,11 @@ const ContainerUser = () => {
     event.preventDefault();
     const headers = new Headers();
     headers.append("Context-Type", "application/json");
-    headers.append('Accept', 'application/json');
+    headers.append("Accept", "application/json");
 
     if (checkInput() && getRequest()) {
       setLoadingRequest(true);
+      console.log(counter)
       fetch(`https://randomuser.me/api/${getRequest()}&results=${counter}`, {
         headers,
       }).then((response) => {
@@ -92,7 +93,7 @@ const ContainerUser = () => {
   };
 
   return (
-    <Fragment>
+    <MainContainer>
       <hr style={{ border: "none", borderTop: "1px solid #dedede" }} />
       <Form onSubmit={(event) => handleRequestUser(event)}>
         <SelectComponent
@@ -131,8 +132,7 @@ const ContainerUser = () => {
             return <UserCard key={index} {...person} />;
           })}
       </User>
-      <Footer />
-    </Fragment>
+    </MainContainer>
   );
 };
 

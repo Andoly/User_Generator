@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
+export const MainContainer = styled.div`
+  min-height: 100vh;
+  position: relative;
+  margin: 0 20px;
+`
+
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 export const LoadingWrapper = styled.div`
