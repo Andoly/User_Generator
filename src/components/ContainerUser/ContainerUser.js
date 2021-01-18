@@ -5,6 +5,7 @@ import SelectComponent from "../Select/Index";
 import Button from "../Button/Index";
 import Input from "../Input/Index";
 import LoadingComponent from "../Loading/Loading";
+import Footer from "../Footer/Footer";
 
 import { Form, LoadingWrapper, User } from "./styles";
 import UserCard from "../UserCard/UserCard";
@@ -47,7 +48,7 @@ const ContainerUser = () => {
   const [loadingRequest, setLoadingRequest] = useState(false);
   const [userInform, setUserInform] = useState([]);
 
-  // console.log(userInform);
+  console.log(userInform);
 
   useEffect(() => {
     if (selectMain !== "") {
@@ -72,6 +73,7 @@ const ContainerUser = () => {
     event.preventDefault();
     const headers = new Headers();
     headers.append("Context-Type", "application/json");
+    headers.append('Accept', 'application/json');
 
     if (checkInput() && getRequest()) {
       setLoadingRequest(true);
@@ -129,6 +131,7 @@ const ContainerUser = () => {
             return <UserCard key={index} {...person} />;
           })}
       </User>
+      <Footer />
     </Fragment>
   );
 };

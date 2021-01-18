@@ -1,12 +1,17 @@
-import React from 'react';
-import { Wrapper, Wave } from './styles'
+import React, { Fragment } from "react";
+import { Wrapper, Wave, WaveTwo, WaveThree } from "./styles";
 
 const Footer = () => {
   return (
-    <Wrapper >
-      <Wave />
-    </Wrapper>
+    <Fragment>
+      <Wrapper>
+        <Wave />
+        <WaveTwo />
+        <WaveThree />
+        Copyright © 2021 - Andoly
+      </Wrapper>
+    </Fragment>
   );
-}
+};
 
 export default Footer;
