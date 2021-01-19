@@ -1,14 +1,16 @@
-import React, { Fragment} from 'react';
-import ContainerUser from '../ContainerUser/ContainerUser'
+import React, { Fragment } from "react";
+import NavBar from "../Header/Navbar";
+import ContainerUser from "../ContainerUser/ContainerUser";
 import Footer from "../Footer/Footer";
 
 const MainGenerator = () => {
   return (
     <Fragment>
-      <ContainerUser/>
+      <NavBar />
+      <ContainerUser />
       <Footer />
     </Fragment>
   );
-}
+};
 
 export default MainGenerator;
